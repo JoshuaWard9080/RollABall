@@ -3,31 +3,44 @@ using UnityEngine.Events;
 
 public class InputManager : MonoBehaviour
 {
-    public UnityEvent<Vector2> OnMove = new UnityEvent<Vector2>();
+    private bool canJump = false;
+
+    public UnityEvent<Vector3> OnMove = new UnityEvent<Vector3>();
+
+    public void setCanJump(bool setter)
+    {
+        this.canJump = setter;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 inputVector = Vector2.zero; // initialize input vector
+        Vector3 inputVector = Vector3.zero; // initialize input vector
         if (Input.GetKey(KeyCode.W))
         {
             Debug.Log("User's Input: W");
-            inputVector += Vector2.up;
+            inputVector += Vector3.forward;
         }
         if (Input.GetKey(KeyCode.A))
         {
             Debug.Log("User's Input: A");
-            inputVector += Vector2.left;
+            inputVector += Vector3.left;
         }
         if (Input.GetKey(KeyCode.S))
         {
             Debug.Log("User's Input: S");
-            inputVector += Vector2.down;
+            inputVector += Vector3.back;
         }
         if (Input.GetKey(KeyCode.D))
         {
             Debug.Log("User's Input: D");
-            inputVector += Vector2.right;
+            inputVector += Vector3.right;
+        }
+        if (Input.GetKey(KeyCode.Space) && canJump == true)
+        {
+            Debug.Log("User's Input: Spacebar");
+            inputVector += Vector3.up;
+            this.canJump = false;
         }
 
         OnMove?.Invoke(inputVector);

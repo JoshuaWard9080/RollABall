@@ -4,10 +4,10 @@ public class BallController : MonoBehaviour
 {
     [SerializeField] private Rigidbody sphereRigidBody;
     [SerializeField] private float ballSpeed = 2f;
+    [SerializeField] private float jumpSpeed = 100f;
     
-    public void MoveBall(Vector2 input)
+    public void MoveBall(Vector3 input)
     {
-        Vector3 inputXZPlane = new Vector3(input.x, 0, input.y);
-        sphereRigidBody.AddForce(inputXZPlane * ballSpeed);
+        sphereRigidBody.AddForce(input.x * ballSpeed, input.y * jumpSpeed, input.z * ballSpeed);
     }
 }
