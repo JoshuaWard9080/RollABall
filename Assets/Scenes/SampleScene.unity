@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sphereRigidBody: {fileID: 99828789}
   ballSpeed: 2
-  jumpSpeed: 250
+  jumpSpeed: 200
 --- !u!114 &99828791
 MonoBehaviour:
   m_ObjectHideFlags: 0
