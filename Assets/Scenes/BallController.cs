@@ -3,6 +3,9 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public Rigidbody sphereRigidBody;
+
     void Start()
     {
         Debug.Log("Calling the Start method");
@@ -32,6 +35,9 @@ public class BallController : MonoBehaviour
             inputVector += Vector2.right;
         }
 
+        Vector3 inputXZPlane = new Vector3(inputVector.x, 0, inputVector.y);
+        sphereRigidBody.AddForce(inputXZPlane);
         Debug.Log("Resultant Vector: " + inputVector);
+        Debug.Log("Resultant 3D Vector: " + inputXZPlane);
     }
 }
