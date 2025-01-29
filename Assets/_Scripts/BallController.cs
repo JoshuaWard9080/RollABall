@@ -4,7 +4,8 @@ public class BallController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    public Rigidbody sphereRigidBody;
+    [SerializeField] private Rigidbody sphereRigidBody;
+    [SerializeField] private float ballSpeed = 2f;
 
     void Start()
     {
